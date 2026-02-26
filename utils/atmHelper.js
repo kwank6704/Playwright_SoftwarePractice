@@ -23,7 +23,6 @@ export async function performDeposit(page, amount, method) {
 
     await page.getByRole('button', { name: 'ฝากเงิน ฿' }).click();
 
-    // รอให้ balance อัปเดตจริง ไม่ใช่แค่ locator resolved
     const balanceLocator = page.locator('div').filter({ hasText: 'ยอดเงินคงเหลือปัจจุบัน฿' }).nth(4);
     await expect(balanceLocator).toContainText(expectedBalanceText, { timeout: 10000 });
     console.log("Current Balance: ", currentBalanceNumber);
@@ -65,7 +64,6 @@ export async function performTransfer(page, { account, amount, remark }, method 
     await page.getByPlaceholder(/หมายเลขบัญชี/).fill(account);
 
     if (method === 'quick_button') {
-        // ปุ่มใช้ ฿ ไม่ใช่ $
         await page.getByRole('button', { name: `฿${amount}` }).click();
     } else {
         await page.locator('input[placeholder="0"]').fill(amountNumber.toString());
@@ -76,7 +74,6 @@ export async function performTransfer(page, { account, amount, remark }, method 
     }
 
     await page.getByRole('button', { name: /โอนเงิน/ }).click();
-    // ใช้ first() แก้ strict mode violation
     await expect(page.getByText('โอนเงินสำเร็จ').first()).toBeVisible({ timeout: 10000 });
 
     const balanceLocator = page.locator('div').filter({ hasText: 'ยอดเงินคงเหลือปัจจุบัน฿' }).nth(4);
