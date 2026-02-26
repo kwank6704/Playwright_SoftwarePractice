@@ -6,6 +6,8 @@ function parseBalance(rawText) {
     return parseFloat(match[1].replace(/,/g, ''));
 }
 
+// Helper functions
+
 export async function performDeposit(page, amount, method) {
     const amountNumber = parseFloat(amount.replace(/,/g, ''));
 
