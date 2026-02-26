@@ -29,7 +29,6 @@ Pre-registered accounts in the system:
 All files are organized under the student ID folder as per the assignment requirements:
 
 HW2_6733065121/
-├── .github/workflows/     # CI/CD configuration
 ├── tests/                 # Test script directory
 │   ├── deposit.spec.js    # Deposit function tests
 │   ├── login_invalid.spec.js # Failed login scenarios
@@ -38,9 +37,6 @@ HW2_6733065121/
 │   ├── transfer.spec.js   # Fund transfer and remark limit tests
 │   └── withdraw.spec.js   # Withdrawal and overdraft tests
 ├── utils/                 # Helper functions and utilities
-├── package.json           # Project dependencies
-├── playwright.config.js   # Playwright configuration file
-└── Assignment2 ATM instruction.pdf
 
 ## Installation and Execution
 
